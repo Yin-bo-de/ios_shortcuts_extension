@@ -1,0 +1,32 @@
+name: LLMCapability
+targets:
+  LLMCapability:
+    type: application
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources:
+      - LLMCapability
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.llm-capability
+        INFOPLIST_FILE: LLMCapability/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        SWIFT_VERSION: "5.9"
+        TARGETED_DEVICE_FAMILY: "1,2"
+    info:
+      path: LLMCapability/Info.plist
+      properties:
+        CFBundleDisplayName: LLM快捷指令
+        CFBundleShortVersionString: "1.0"
+        CFBundleVersion: "1"
+        UILaunchStoryboardName: LaunchScreen
+        UIRequiredDeviceCapabilities:
+          - armv7
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+          UISceneConfigurations:
+            UIWindowSceneSessionRoleApplication:
+              - UISceneConfigurationName: Default Configuration
+                UISceneDelegateClassName: $(PRODUCT_MODULE_NAME).SceneDelegate
