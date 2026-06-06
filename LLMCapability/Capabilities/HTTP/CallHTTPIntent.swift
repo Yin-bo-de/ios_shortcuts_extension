@@ -34,18 +34,3 @@ struct CallHTTPIntent: AppIntent {
     }
 }
 
-// MARK: - App Shortcuts Provider
-
-struct HTTPAppShortcuts: AppShortcutsProvider {
-    static var appShortcuts: [AppShortcut] {
-        AppShortcut(
-            intent: CallHTTPIntent(),
-            phrases: [
-                "用 ${applicationName} 发起 HTTP 请求",
-                "用 ${applicationName} 调用接口"
-            ],
-            shortTitle: "调用 HTTP",
-            systemImageName: "arrow.up.arrow.down.circle"
-        )
-    }
-}

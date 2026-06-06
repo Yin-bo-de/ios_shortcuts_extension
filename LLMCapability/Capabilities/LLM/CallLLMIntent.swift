@@ -79,7 +79,8 @@ struct CallLLMWithSystemPromptIntent: AppIntent {
 
 // MARK: - App Shortcuts Provider
 
-struct LLMAppShortcuts: AppShortcutsProvider {
+struct AppShortcuts: AppShortcutsProvider {
+    @AppShortcutsBuilder
     static var appShortcuts: [AppShortcut] {
         AppShortcut(
             intent: CallLLMIntent(),

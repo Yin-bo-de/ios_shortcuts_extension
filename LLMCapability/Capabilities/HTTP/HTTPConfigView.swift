@@ -10,7 +10,7 @@ struct HTTPConfigView: View {
     @State private var url: String
     @State private var method: HTTPMethod
     @State private var headerItems: [HeaderItem]
-    @State private var body: String
+    @State private var requestBody: String
     @State private var timeout: Double
     @State private var showingTestAlert = false
     @State private var testResult: String?
@@ -21,7 +21,7 @@ struct HTTPConfigView: View {
         _name = State(initialValue: config?.name ?? "")
         _url = State(initialValue: config?.url ?? "")
         _method = State(initialValue: config?.method ?? .get)
-        _body = State(initialValue: config?.body ?? "")
+        _requestBody = State(initialValue: config?.body ?? "")
         _timeout = State(initialValue: config?.timeout ?? 60.0)
 
         let headers = config?.headers ?? [:]
@@ -63,7 +63,7 @@ struct HTTPConfigView: View {
 
             if method == .post {
                 Section(header: Text("请求体 (Body)")) {
-                    TextEditor(text: $body)
+                    TextEditor(text: $requestBody)
                         .frame(minHeight: 100)
                 }
             }
@@ -132,7 +132,7 @@ struct HTTPConfigView: View {
             url: url,
             method: method,
             headers: currentHeaders,
-            body: body,
+            body: requestBody,
             timeout: timeout
         )
         registry.addHTTPConfig(newConfig)
@@ -151,7 +151,7 @@ struct HTTPConfigView: View {
                     url: url,
                     method: method,
                     headers: currentHeaders,
-                    body: body,
+                    body: requestBody,
                     timeout: timeout
                 )
                 let response = try await HTTPCapability.call(config: testConfig)

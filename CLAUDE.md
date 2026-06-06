@@ -34,6 +34,7 @@ App 围绕**能力注册表**构建，旨在支持多个原子能力暴露给 iO
 - `LLMAppShortcuts` 和 `HTTPAppShortcuts` 提供 Siri 短语建议。
 - Intents 从 `CapabilityRegistry.shared` 读取运行时配置，该配置从 `UserDefaults` 加载。Intents 自身不维护状态。
 - **重要**：App Intents 必须在源码中声明（而非 plist），且仅在 App 至少构建并运行一次后才会出现在快捷指令 App 中。
+- **AppShortcutsProvider 规则**：实现 `AppShortcutsProvider` 时，`appShortcuts` 属性必须用 `@AppShortcutsBuilder` 修饰，返回类型为 `[AppShortcut]`，闭包内直接列出 `AppShortcut` 实例（不要用数组字面量 `[]` 包裹）。错误示例：`static var appShortcuts: AppShortcut { [AppShortcut(...)] }`；正确示例：`@AppShortcutsBuilder static var appShortcuts: [AppShortcut] { AppShortcut(...) }`。
 
 ### 持久化
 
